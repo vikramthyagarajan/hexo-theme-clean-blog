@@ -101,7 +101,11 @@ hr.small
   background-color gray
   background no-repeat center center
   background-attachment scroll
-  @extend .background-cover
+  background-size 100% 100%
+  @media only screen and (max-width: 768px)
+    background-size inherit
+  @media only screen and (min-width: 1440px)
+    background-size cover
   margin-bottom 50px
   .site-heading, .post-heading, .page-heading
     padding 100px 0 50px
@@ -129,14 +133,23 @@ hr.small
   .post-heading
     h1
       font-size 35px
+      text-align center
+      font-weight 700
+      margin-top 0px
+      margin-bottom 0px;
+      padding-top 20px;
+      padding-bottom 10px;
     .subheading, .meta
       line-height 1.1
       display block
     .subheading
       @extend .sans-serif
       font-size 24px
-      margin 10px 0 30px
-      font-weight 600
+      padding 10px 10px 30px
+      margin-top 40px
+      font-weight 300
+      text-align center
+      color silver
     .meta
       @extend .serif
       font-style italic
@@ -146,9 +159,14 @@ hr.small
         color white
     @media only screen and (min-width: 768px)
       h1
-        font-size 55px
+        font-size 42px
       .subheading
-        font-size 30px
+        font-size 25px
+    @media only screen and (max-width: 768px)
+      h1
+        font-size 42px
+      .subheading
+        font-size 25px
 
 .post-preview
   > a

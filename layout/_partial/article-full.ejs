@@ -10,17 +10,10 @@
                 <div class="post-heading">
                     <h1><%- item.title || theme.default_post_title || "Untitled" %></h1>
                     <% if (item.subtitle && item.subtitle.length) { %>
-                    <h2 class="post-subheading">
+                    <h2 class="subheading">
                         <%- item.subtitle %>
                     </h2>
                     <% } %>
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        <% if(item.author) { %>
-                            Posted by <%- item.author %> on
-                        <% } %>
-                        <%= item.date.format(config.date_format) %>
-                    </span>
                 </div>
             </div>
         </div>
@@ -32,8 +25,18 @@
     <div class="container">
         <div class="row">
 
+            <!-- Gallery -->
+            <% if (item.photos && item.photos.length){ %>
+                <%- partial('gallery') %>
+            <% } %>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <%- item.content %>
+            </div>
+
             <!-- Tags and categories -->
-           <% if (item.categories && item.categories.length || item.tags && item.tags.length) { %>
+            <% if (item.categories && item.categories.length || item.tags && item.tags.length) { %>
                 <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
                     <% if (item.tags && item.tags.length){ %>
                         <%- partial('article-tags', {item: item}) %>
@@ -47,16 +50,6 @@
                     <% } %>
                 </div>
             <% } %>
-
-            <!-- Gallery -->
-            <% if (item.photos && item.photos.length){ %>
-                <%- partial('gallery') %>
-            <% } %>
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <%- item.content %>
-            </div>
 
             <!-- Comments -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
